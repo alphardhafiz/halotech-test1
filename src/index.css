@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {
+  @apply bg-blue-500 text-white font-bold rounded-r-md;
+}
+.active .template {
+  @apply bg-[#73a9f0] bg-template-icon-active bg-center bg-no-repeat;
+}
+.active .album {
+  @apply bg-[#73a9f0] bg-album-icon-active bg-center bg-no-repeat;
+}
+table th,
+table td {
+  @apply py-4;
+}
+
+form select {
+  @apply outline-none;
+}
