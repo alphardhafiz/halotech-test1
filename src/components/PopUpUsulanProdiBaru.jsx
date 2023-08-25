@@ -9,6 +9,10 @@ const PopUpUsulanProdiBaru = () => {
 
   useEffect(() => {
     const getProdiData = async () => {
+      if (!jenjang || jenjang === "0") {
+        setProdiList([]);
+        return;
+      }
       try {
         const { data } = await axios.get(
           `http://api17002.prodidikti.halotec.my.id/api/prodi-master/jenjang/${jenjang}`
@@ -68,7 +72,9 @@ const PopUpUsulanProdiBaru = () => {
               className="text-sm w-3/4 text-[#3A3541DE] border-2 p-4 rounded-md"
               onChange={(e) => setJenjang(e.target.value)}
             >
-              <option className="text-[#3A354161]">Pilih Jenjang</option>
+              <option value="0" className="text-[#3A354161]">
+                Pilih Jenjang
+              </option>
               <option value="1">Sarjana</option>
               <option value="2">Magister</option>
               <option value="3">Doctor</option>
