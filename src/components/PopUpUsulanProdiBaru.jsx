@@ -5,10 +5,12 @@ import axios from "axios";
 
 const PopUpUsulanProdiBaru = () => {
   const [prodiList, setProdiList] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [jenjang, setJenjang] = useState("");
 
   useEffect(() => {
     const getProdiData = async () => {
+      setLoader(true);
       if (!jenjang || jenjang === "0") {
         setProdiList([]);
         return;
@@ -17,6 +19,9 @@ const PopUpUsulanProdiBaru = () => {
         const { data } = await axios.get(
           `http://api17002.prodidikti.halotec.my.id/api/prodi-master/jenjang/${jenjang}`
         );
+        setTimeout(() => {
+          setLoader(false);
+        }, 1000);
         setProdiList(data.data);
       } catch (error) {
         console.log(error.message);
@@ -118,9 +123,15 @@ const PopUpUsulanProdiBaru = () => {
           </div>
           {/* Prodi */}
           <div className="flex justify-between">
-            <label htmlFor="jenjang" className="py-4">
-              Prodi
-            </label>
+            {!loader ? (
+              <label htmlFor="jenjang" className="py-4">
+                Prodi
+              </label>
+            ) : (
+              <label htmlFor="jenjang" className="py-4">
+                loading
+              </label>
+            )}
             <select
               name="jenjang"
               id="jenjang"

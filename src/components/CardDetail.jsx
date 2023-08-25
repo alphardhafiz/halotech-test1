@@ -45,7 +45,7 @@ const CardDetail = () => {
             />
             <button
               onClick={popUpUsulanProdi}
-              className="flex items-center gap-4 justify-between py-[7px] px-4 rounded-md text-white bg-[#2684FF]"
+              className="flex items-center gap-4 justify-between py-[7px] px-4  text-white bg-[#2684FF]"
             >
               <img src={plusIcon} alt="plus" />
               <span className="font-medium">
