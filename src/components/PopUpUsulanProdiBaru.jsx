@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
 import closeIcon from "../assets/Close.svg";
 import exclamationIcon from "../assets/exclamation circle.svg";
+import axios from "axios";
 
 const PopUpUsulanProdiBaru = () => {
+  const [prodiList, setProdiList] = useState([]);
+  const [jenjang, setJenjang] = useState("");
+
+  useEffect(() => {
+    const getProdiData = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://api17002.prodidikti.halotec.my.id/api/prodi-master/jenjang/${jenjang}`
+        );
+        setProdiList(data.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getProdiData();
+  }, [jenjang]);
+
   const closePopUp = () => {
     const popUpUsulanProdi = document.getElementById("popUpUsulanProdi");
     popUpUsulanProdi.classList.remove("flex");
     popUpUsulanProdi.classList.add("hidden");
   };
+
   return (
     <div
       id="popUpUsulanProdi"
@@ -46,16 +66,12 @@ const PopUpUsulanProdiBaru = () => {
               name="jenjang"
               id="jenjang"
               className="text-sm w-3/4 text-[#3A3541DE] border-2 p-4 rounded-md"
+              onChange={(e) => setJenjang(e.target.value)}
             >
               <option className="text-[#3A354161]">Pilih Jenjang</option>
-              <option value="Diploma/Sarjana">Diploma/Sarjana</option>
-              <option value="Pendidikan Profesi">Pendidikan Profesi</option>
-              <option value="Magister/Magister Terapan/Spesialis">
-                Magister/Magister Terapan/Spesialis
-              </option>
-              <option value="Doktor/Doktor Terapan/Sub-Spesialis">
-                Doktor/Doktor Terapan/Sub-Spesialis
-              </option>
+              <option value="1">Sarjana</option>
+              <option value="2">Magister</option>
+              <option value="3">Doctor</option>
             </select>
           </div>
           <div className="flex justify-between">
@@ -94,6 +110,7 @@ const PopUpUsulanProdiBaru = () => {
               <option value="Psikologi">Psikologi</option>
             </select>
           </div>
+          {/* Prodi */}
           <div className="flex justify-between">
             <label htmlFor="jenjang" className="py-4">
               Prodi
@@ -104,24 +121,11 @@ const PopUpUsulanProdiBaru = () => {
               className="text-sm w-3/4 text-[#3A3541DE] border-2 p-4 rounded-md"
             >
               <option className="text-[#3A354161]">Pilih Prodi</option>
-              <option value="Diploma/Sarjana">Ilmu Al-Quran dan Tafsir</option>
-              <option value="Pendidikan Profesi">Ilmu Hadits</option>
-              <option value="Magister/Magister Terapan/Spesialis">
-                Aqidah dan Filsafat Islam
-              </option>
-              <option value="Doktor/Doktor Terapan/Sub-Spesialis">
-                Ilmu Tasawuf
-              </option>
-              <option value="Studi Agama Agama">Studi Agama Agama</option>
-              <option value="Pemikiran Politik Islam">
-                Pemikiran Politik Islam
-              </option>
-              <option value="Antropologi Agama">Antropologi Agama</option>
-              <option value="Sosiologi Agama">Sosiologi Agama</option>
-              <option value="Studi Islam">Studi Islam</option>
-              <option value="Tasawuf dan Psikoterapi">
-                Tasawuf dan Psikoterapi
-              </option>
+              {prodiList.map((prodi) => (
+                <option key={prodi.id} value={prodi.namProdi}>
+                  {prodi.namaProdi}
+                </option>
+              ))}
             </select>
           </div>
         </form>

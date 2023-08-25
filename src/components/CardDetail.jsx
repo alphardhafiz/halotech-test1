@@ -82,53 +82,57 @@ const CardDetail = () => {
         </div>
 
         <table>
-          <tr className="w-full text-[#969696] bg-[#F9FAFC] font-medium text-base border-b-2">
-            <th className="w-1/5">Nomor Registrasi</th>
-            <th className="w-1/4">Nama Prodi</th>
-            <th className="w-1/7">Jenjang</th>
-            <th className="w-1/12">Tanggal diusulkan</th>
-            <th className="w-1/12">Tanggal Konfirmasi</th>
-            <th className="w-1/4">Status Progres</th>
-            <th className="text-transparent mr-0 ">.</th>
-          </tr>
-          <tr className="text-justify text-[#585757] font-normal  border-b-2">
-            <td>21042101023</td>
-            <td>Ekonomi Syariah</td>
-            <td>Sarjana</td>
-            <td>2021-04-21</td>
-            <td>2022-09-05</td>
-            <td className="flex gap-[6px] rounded-md bg-[#FED3031A] px-[6px]">
-              <span className="bg-[#FED303] rounded-full w-6 h-6 flex justify-center items-center">
-                1
-              </span>{" "}
-              <p className="font-medium text-sm">
-                Konfirmasi Dokumen dan Lengkap
-              </p>
-            </td>
-            <td>
-              <button>
-                <img src={threedot} alt="" />
-              </button>
-            </td>
-          </tr>
-          <tr className="text-justify text-[#585757] font-normal  border-b-2">
-            <td>21042101002</td>
-            <td>Pendidikan Guru Madrasah Ibtidaiyah</td>
-            <td>Sarjana</td>
-            <td>2021-04-21</td>
-            <td>2022-09-05</td>
-            <td className="flex items-center gap-[6px] rounded-md bg-[#8FD79F1A] px-[6px]">
-              <span className="bg-[#8FD79F] rounded-full w-6 h-6 flex justify-center items-center">
-                4
-              </span>{" "}
-              <p className="font-medium text-sm">Validasi BAN PT</p>
-            </td>
-            <td>
-              <button>
-                <img src={threedot} alt="" />
-              </button>
-            </td>
-          </tr>
+          <thead>
+            <tr className="w-full text-[#969696] bg-[#F9FAFC] font-medium text-base border-b-2">
+              <th className="w-1/5">Nomor Registrasi</th>
+              <th className="w-1/4">Nama Prodi</th>
+              <th className="w-1/7">Jenjang</th>
+              <th className="w-1/12">Tanggal diusulkan</th>
+              <th className="w-1/12">Tanggal Konfirmasi</th>
+              <th className="w-1/4">Status Progres</th>
+              <th className="text-transparent mr-0 ">.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="text-justify text-[#585757] font-normal  border-b-2">
+              <td>21042101023</td>
+              <td>Ekonomi Syariah</td>
+              <td>Sarjana</td>
+              <td>2021-04-21</td>
+              <td>2022-09-05</td>
+              <td className="flex gap-[6px] rounded-md bg-[#FED3031A] px-[6px]">
+                <span className="bg-[#FED303] rounded-full w-6 h-6 flex justify-center items-center">
+                  1
+                </span>{" "}
+                <p className="font-medium text-sm">
+                  Konfirmasi Dokumen dan Lengkap
+                </p>
+              </td>
+              <td>
+                <button>
+                  <img src={threedot} alt="" />
+                </button>
+              </td>
+            </tr>
+            <tr className="text-justify text-[#585757] font-normal  border-b-2">
+              <td>21042101002</td>
+              <td>Pendidikan Guru Madrasah Ibtidaiyah</td>
+              <td>Sarjana</td>
+              <td>2021-04-21</td>
+              <td>2022-09-05</td>
+              <td className="flex items-center gap-[6px] rounded-md bg-[#8FD79F1A] px-[6px]">
+                <span className="bg-[#8FD79F] rounded-full w-6 h-6 flex justify-center items-center">
+                  4
+                </span>{" "}
+                <p className="font-medium text-sm">Validasi BAN PT</p>
+              </td>
+              <td>
+                <button>
+                  <img src={threedot} alt="" />
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </>
